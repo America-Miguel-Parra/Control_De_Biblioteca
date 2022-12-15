@@ -13,3 +13,5 @@ router.delete("/",EliminarPestamoID) // http://localhost:4000/api/v1/usuarios/?i
 
 ////POST////
 router.post("/",AgregarPrestamo)
+
+module.exports=router

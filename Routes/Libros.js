@@ -1,9 +1,9 @@
 const {Router} = require("express");
-const {MostarLibros, DarDeBajaLibroID, MostrarLibrosID, DarDeAltaLibro, ActualizarLibro} = require ("../controllers/Libros")
+const {MostrarLibros, DarDeBajaLibroID, MostrarLibrosID, DarDeAltaLibro, ActualizarLibro} = require ("../controllers/Libros")
 const router = Router()
 
 ///GET///
-router.get("/", MostarLibros)
+router.get("/", MostrarLibros)
 router.get("/id/:id/", MostrarLibrosID) //http://localhost:4000/api/v1/usuarios/id/11
 
 

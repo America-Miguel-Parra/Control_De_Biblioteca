@@ -134,14 +134,14 @@ const AgregarLector = async (req=request, res=response) =>{
             Email,
             Contrasena
         ) VALUES (
-            '${Activo}'
+            '${Activo}',
             '${Nombre}',
             '${Apellidos}',
-             ${Edad},
-             ${Domicilio},
-             ${Cod_Postal},
-             ${Telefono},
-             ${Email},
+             '${Edad}',
+            '${Domicilio}´,
+             '${Cod_Postal}',
+             '${Telefono}',
+            '${Email}',
             '${contrasenaCifrada}'
         )`
         , (error) => {throw new Error(error)})
@@ -193,7 +193,7 @@ const ActualizarLector = async (req=request, res=response) =>{
         FROM LECTORES
         WHERE Email = '${Email}'`)
         if (!lector){
-            res.status(403).json({msg:`El correo electronico ${Email} no se encuentra registrado`})
+            res.status(403).json({msg:`El correo electronico ${Email} ya se encuentra registrado`})
             return
         }
         const {affectedRows} = await conn.query( `
@@ -201,8 +201,8 @@ const ActualizarLector = async (req=request, res=response) =>{
             Nombre = '${Nombre || user.Nombre}',
             Apellidos = '${Apellidos || user.Apellidos}',
             Edad = ${Edad || user.Edad},
-            Domicilio = ${Domicilio || user.Domicilio},
-            Cod_Postal = ${Cod_Postal || user.Cod_Postal},
+            Domicilio = '${Domicilio || user.Domicilio}',
+            Cod_Postal = '${Cod_Postal || user.Cod_Postal}',
             Telefono = '${Telefono}'
         WHERE Email ='${Email}'`
         , (error) => {throw new Error(error)})
